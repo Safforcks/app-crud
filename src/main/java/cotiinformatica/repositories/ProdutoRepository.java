@@ -19,4 +19,20 @@ public class ProdutoRepository {
             statement.execute();
         }
     }
+
+    public boolean atualizar(Produto produto) throws Exception {
+
+        var factory = new ConnectionFactory();
+
+        try (var connection = factory.obterConexao()){
+
+            var statement = connection.prepareStatement("update produtos set nome=?, preco=?, quantidade=? where id=?");
+
+            statement.setString(1, produto.getNome());
+            statement.setDouble(2, produto.getPreco());
+            statement.setInt(3, produto.getQuantidade());
+            statement.setInt(4, produto.getId());
+            return statement.executeUpdate() > 0;
+        }
+    }
 }
