@@ -11,7 +11,7 @@ public class ProdutoRepository {
 
         try (var connection = factory.obterConexao()){
 
-            var statement = connection.prepareStatement("insert into produtos(nome, preco, quantidades) values(?, ?, ?)");
+            var statement = connection.prepareStatement("insert into produtos(nome, preco, quantidade) values(?, ?, ?)");
 
             statement.setString(1, produto.getNome());
             statement.setDouble(2, produto.getPreco());

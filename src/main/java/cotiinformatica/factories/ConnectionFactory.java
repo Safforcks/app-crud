@@ -12,7 +12,7 @@ public class ConnectionFactory {
 
     public Connection obterConexao() throws Exception {
 
-        var host = "jdbc:mysql://localhost:3307/app-crud";
+        var host = "jdbc:mysql://localhost:3307/app_crud";
         var user = "coti";
         var pass = "coti";
 
