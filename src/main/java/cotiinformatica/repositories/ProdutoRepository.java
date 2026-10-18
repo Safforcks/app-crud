@@ -3,6 +3,9 @@ package cotiinformatica.repositories;
 import cotiinformatica.entities.Produto;
 import cotiinformatica.factories.ConnectionFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProdutoRepository {
 
     public void inserir(Produto produto) throws Exception {
@@ -46,6 +49,33 @@ public class ProdutoRepository {
 
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
+        }
+    }
+
+    public List<Produto> consultar() throws Exception {
+
+        var factory = new ConnectionFactory();
+
+        try (var connection = factory.obterConexao()) {
+
+            var statement = connection.prepareStatement("select * from produtos by order id");
+            var result = statement.executeQuery();
+
+            var lista = new ArrayList<Produto>();
+
+            while (result.next()) {
+
+                var produto = new Produto();
+
+                produto.setId(result.getInt("id"));
+                produto.setNome(result.getString("nome"));
+                produto.setPreco(result.getDouble("preco"));
+                produto.setQuantidade(result.getInt("quantidade"));
+
+                lista.add(produto);
+            }
+
+            return lista;
         }
     }
 }
