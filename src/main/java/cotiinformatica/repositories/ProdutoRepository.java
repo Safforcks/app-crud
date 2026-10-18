@@ -35,4 +35,17 @@ public class ProdutoRepository {
             return statement.executeUpdate() > 0;
         }
     }
+
+    public boolean excluir(Integer id) throws Exception {
+
+        var factory = new ConnectionFactory();
+
+        try (var connection = factory.obterConexao()) {
+
+            var statement = connection.prepareStatement("delete from produtos where id=?");
+
+            statement.setInt(1, id);
+            return statement.executeUpdate() > 0;
+        }
+    }
 }
