@@ -71,7 +71,6 @@ public class ProdutoService {
 
         try {
 
-            var produto = new Produto();
             var scanner = new Scanner(System.in);
 
             System.out.print("\nINFORME O ID DO PRODUTO..: ");
@@ -81,6 +80,28 @@ public class ProdutoService {
             produtoRepository.excluir(id);
 
             System.out.println("\nPRODUTO EXCLUÍDO COM SUCESSO!");
+        } catch (Exception e) {
+            System.out.println("\nERRO: " + e.getMessage());
+        }
+    }
+
+    public void consultarProduto() {
+
+        System.out.println("\nCONSULTA DO PRODUTO:\n");
+
+        try {
+
+            var produtoRepository = new ProdutoRepository();
+            var lista = produtoRepository.consultar();
+
+            for (var produto : lista) {
+                System.out.println("ID...........: " + produto.getId());
+                System.out.println("NOME.........: " + produto.getNome());
+                System.out.println("PREÇO........: " + produto.getPreco());
+                System.out.println("QTD..........: " + produto.getQuantidade());
+                System.out.println(".............." );
+            }
+
         } catch (Exception e) {
             System.out.println("\nERRO: " + e.getMessage());
         }
