@@ -24,6 +24,15 @@ public class Main {
             case 1:
                 service.cadastrarProduto();
                 break;
+            case 2:
+                service.atualizarProduto();
+                break;
+            case 3:
+                service.excluirProduto();
+                break;
+            case 4:
+                service.consultarProduto();
+                break;
             default:
                 System.out.println("\nOPÇÃO INVÁLIDA!");
                 break;

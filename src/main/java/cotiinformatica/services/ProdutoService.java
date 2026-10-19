@@ -34,7 +34,7 @@ public class ProdutoService {
         }
     }
 
-    public void atulizarProduto() {
+    public void atualizarProduto() {
 
         System.out.println("\nATUALIZAÇÃO DE PRODUTO:\n");
 
