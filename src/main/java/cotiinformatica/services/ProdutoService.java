@@ -75,7 +75,7 @@ public class ProdutoService {
 
             var scanner = new Scanner(System.in);
 
-            System.out.print("\nINFORME O ID DO PRODUTO..: ");
+            System.out.print("INFORME O ID DO PRODUTO..: ");
             var id = Integer.parseInt(scanner.nextLine());
 
             var produtoRepository = new ProdutoRepository();

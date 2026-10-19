@@ -58,7 +58,7 @@ public class ProdutoRepository {
 
         try (var connection = factory.obterConexao()) {
 
-            var statement = connection.prepareStatement("select * from produtos by order id");
+            var statement = connection.prepareStatement("select * from produtos order by id");
             var result = statement.executeQuery();
 
             var lista = new ArrayList<Produto>();
