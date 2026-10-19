@@ -56,10 +56,12 @@ public class ProdutoService {
             produto.setQuantidade(Integer.parseInt(scanner.nextLine()));
 
             var produtoRepository = new ProdutoRepository();
-            produtoRepository.atualizar(produto);
 
-            System.out.println("\nPRODUTO ATUALIZADO COM SUCESSO!");
-
+            if(produtoRepository.atualizar(produto)) {
+                System.out.println("\nPRODUTO ATUALIZADO COM SUCESSO!");
+            } else {
+                System.out.println("\nNENHUM PRODUTO ENCONTRADO.");
+            }
         } catch (Exception e) {
             System.out.println("\nERRO: " + e.getMessage());
         }
@@ -77,9 +79,12 @@ public class ProdutoService {
             var id = Integer.parseInt(scanner.nextLine());
 
             var produtoRepository = new ProdutoRepository();
-            produtoRepository.excluir(id);
 
-            System.out.println("\nPRODUTO EXCLUÍDO COM SUCESSO!");
+            if(produtoRepository.excluir(id)) {
+                System.out.println("\nPRODUTO EXCLUÍDO COM SUCESSO!");
+            } else {
+                System.out.println("\nNENHUM PRODUTO ENCONTRADO.");
+            }
         } catch (Exception e) {
             System.out.println("\nERRO: " + e.getMessage());
         }
